@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate.ejs') -%>
+<style>
+    body {
+        background-color: black;
+    }
+</style>
+
+<div class="container mt-4" style="padding-top: 100px;">
+    <h2 class="text-white">Order Placed Successfully!</h2>
+    
+    <div class="text-white">
+        <h4>Order Summary:</h4>
+        <ul>
+            <% cartItems.forEach(item => { %>
+                <li><%= item.title %> - Quantity: <%= item.quantity %></li>
+            <% }) %>
+        </ul>
+        <h3>Total Amount: &#x20b9;<%= totalAmount.toFixed(2) %></h3>
+    </div>
+    
+    <button id="okButton" class="btn btn-primary mt-4">OK</button>
+</div>
+
+<script>
+    document.getElementById('okButton').addEventListener('click', function() {
+        // Redirect to the home page
+        window.location.href = '/'; // Adjust the path to your home page
+    });
+</script>

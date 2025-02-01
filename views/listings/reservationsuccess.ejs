@@ -1,0 +1,89 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+    <style>
+        /* Popup background overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* Popup container */
+        .popup {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Success icon */
+        .popup img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        /* Table number display */
+        .table-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        /* Close button */
+        .close-popup {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color:#27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+
+<body>
+
+<div class="overlay">
+    <div class="popup">
+        <img src="/images/logo.png" alt="Success">
+        <h1>Reservation Successful!</h1>
+        <h5>Your assigned table number is:</h5>
+        <div class="table-number">
+            Table #<%= tableNumber %>
+        </div>
+        <button class="close-popup">OK</button>
+    </div>
+</div>
+
+<script>
+    // Close the popup when the button is clicked
+    document.querySelector('.close-popup').addEventListener('click', function () {
+        document.querySelector('.overlay').style.display = 'none';
+        window.location.href = '/'; // Redirect to home or another page
+    });
+</script>
+
+</body>
+

@@ -1,0 +1,176 @@
+
+<% layout('layouts/boilerplate.ejs') -%>
+
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Font Awesome for icons -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black /* Light background for contrast */
+        }
+
+        .hero {
+            background-image: url('https://img.freepik.com/premium-photo/gourmet-food-plating-variety-plates-settings-with-dark-background_14117-672053.jpg'); /* Hero background image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .about-section, .menu-section, .contact-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: orange;
+            margin-bottom: 30px;
+            animation: slideIn 1s ease;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 600px;
+            animation: fadeInUp 1s ease;
+            color: white;
+        }
+
+        .menu-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s;
+            background-color: #fff;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-section {
+            background-color: orange;
+            color: white;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div>
+            <h1>Welcome to Flavours and Fables</h1>
+            <p>Where every dish tells a story</p>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="container about-section">
+        <h2 class="section-title">About Us</h2>
+        <p class="about-text">
+            At <span style="color: orange;">Flavours and Fables</span>, we believe in crafting a unique dining experience where storytelling meets the culinary arts. Join us for a journey of taste that celebrates local flavors and global inspirations.
+        </p>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="container menu-section">
+        <h2 class="section-title">Our Specialties</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <i class="fas fa-utensils fa-3x" style="color: orange"></i>
+                    <h4>Spaghetti Carbonara</h4>
+                    <p>Creamy pasta with bacon, parmesan, and silky egg sauce.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <i class="fas fa-bowl-food fa-3x" style="color: orange;"></i>
+                    <h4>Grilled Salmon</h4>
+                    <p>Perfectly grilled salmon served with a lemon butter sauce.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <i class="fas fa-cookie fa-3x" style="color: orange;"></i>
+                    <h4>Chocolate Lava Cake</h4>
+                    <p>A rich chocolate cake with a gooey center, served warm.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <!-- <div class="container contact-section">
+        <h2 class="section-title">Get in Touch</h2>
+        <p>We would love to hear from you! Feel free to reach out for reservations or inquiries.</p>
+        <p><i class="fas fa-phone-alt"></i> +1 (234) 567-890</p>
+        <p><i class="fas fa-envelope"></i> info@flavoursandfables.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Culinary St, Foodtown, USA</p>
+    </div> -->
+
+    <!-- Bootstrap JS, jQuery, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

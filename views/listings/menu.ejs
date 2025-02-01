@@ -1,0 +1,109 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+
+  <style>
+    /* Ensure all cards are of equal height */
+    .card {
+      height: 100%; /* Makes all cards the same height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Ensures content is spaced evenly */
+      opacity: 0; /* Start with invisible cards */
+      transform: translateY(50px); /* Start slightly lower for animation effect */
+      transition: all 0.5s ease-out; /* Smooth transition */
+    }
+
+    .card-img-top {
+      height: 200px; /* Set fixed height for all images */
+      object-fit: cover; /* Ensures images maintain aspect ratio while fitting */
+    }
+
+    .card-body {
+      flex-grow: 1; /* Ensures consistent height for content area */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .btn-primary {
+      width: 100%; /* Makes the button stretch the full width */
+    }
+
+    .card-title {
+      text-align: center; /* Center-align titles for aesthetics */
+    }
+
+    body {
+      background-color: black; /* Page background color */
+    }
+
+    /* Add active class when card is visible */
+    .card.visible {
+      opacity: 1; /* Make card visible */
+      transform: translateY(0); /* Move to original position */
+    }
+  </style>
+
+
+<body>
+  <div class="container mt-4" style="padding-top: 100px">
+    <div class="row">
+      <% items.forEach(item => { %>
+      <div class="col-md-4 d-flex align-items-stretch mb-4">
+        <div class="card">
+          <img
+            src="<%= item.image_url %>"
+            class="card-img-top"
+            alt="<%= item.title %>"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %></h5>
+            <p class="card-text"><%= item.description %></p>
+            <p class="card-text">Price: &#x20b9;<%= item.price %></p>
+            <form action="/cart/add/<%= item.item_id %>" method="POST">
+              <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input
+                  type="number"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" class="btn btn-dark mt-2">
+                Add to Cart
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cards = document.querySelectorAll(".card");
+
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible"); // Add class when in view
+              observer.unobserve(entry.target); // Stop observing once animated
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 10% of the card should be visible to trigger the animation
+        }
+      );
+
+      cards.forEach((card) => {
+        observer.observe(card); // Observe each card
+      });
+    });
+  </script>
+</body>
+

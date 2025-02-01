@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+    .orders{
+        padding-top: 100px;
+    }
+
+</style>
+
+<body>
+    <div class="orders my-5">
+        <h2 class="text-center mb-4">Active Orders</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th >User Name</th>
+                    <th>Items Ordered</th>
+                    <th>Table Number</th>
+                    <th>Total Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (orders.length > 0) { %>
+                    <% orders.forEach(order => { %>
+                        <tr>
+                            <td><%= order.user_name %></td>
+                            <td><%= order.items_ordered %></td>
+                            <td><%= order.table_number %></td>
+                            <td>₹<%= order.total_amount %></td>
+                            <td>
+                                <form action="/orders/<%= order.order_id %>/complete" method="POST">
+                                    <button type="submit" class="btn btn-success">Completed</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" class="text-center">No active orders</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>

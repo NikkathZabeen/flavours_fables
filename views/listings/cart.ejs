@@ -1,0 +1,174 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding-top: 100px;
+  }
+
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+  }
+
+  .cart-table th {
+    background-color:orange;
+    color: white;
+  }
+
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+
+  .cart-item div {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  .cart-table td {
+    background-color: #333;
+  }
+
+  .update-btn,
+  .remove-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .update-btn:hover,
+  .remove-btn:hover {
+    background-color: orange;
+  }
+
+  .total-price {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+  }
+
+  .place-order-btn {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .place-order-btn:hover {
+    background-color: orange;
+  }
+
+  /* Styling input field */
+  input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: white;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
+
+<div class="container">
+  <h2>Your Cart</h2>
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cartItems.forEach(item => { %>
+      <tr class="cart-item">
+        <td>
+          <img src="<%= item.image_url %>" alt="<%= item.title %>" />
+          <div><%= item.title %></div>
+        </td>
+        <td>
+          <form
+            action="/cart/update/<%= item.order_item_id %>"
+            method="POST"
+            style="display: flex; align-items: center; gap: 10px"
+          >
+            <input
+              type="number"
+              name="quantity"
+              value="<%= item.quantity %>"
+              min="1"
+              required
+            />
+            <button type="submit" class="update-btn">Update</button>
+          </form>
+        </td>
+        <td>&#x20b9;<%= item.price %></td>
+        <td>&#x20b9;<%= (item.price * item.quantity).toFixed(2) %></td>
+        <td>
+          <form action="/cart/delete/<%= item.order_item_id %>" method="POST">
+            <button type="submit" class="remove-btn">Remove</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <div class="total-price">
+    Total Price: &#x20b9;<%= totalAmount.toFixed(2) %>
+  </div>
+
+  <form action="/cart/place-order" method="POST">
+    <input type="hidden" name="totalAmount" value="<%= totalAmount %>" />
+    <button type="submit" class="place-order-btn">Place Order</button>
+  </form>
+</div>
+
+<script>
+  document.querySelectorAll(".increase").forEach((button) => {
+    button.addEventListener("click", () => {
+      const input = button.parentNode.querySelector("input");
+      input.value = parseInt(input.value) + 1;
+    });
+  });
+
+  document.querySelectorAll(".decrease").forEach((button) => {
+    button.addEventListener("click", () => {
+      const input = button.parentNode.querySelector("input");
+      if (input.value > 1) {
+        input.value = parseInt(input.value) - 1;
+      }
+    });
+  });
+</script>

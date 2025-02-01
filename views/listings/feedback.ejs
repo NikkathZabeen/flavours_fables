@@ -1,0 +1,81 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedbacks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        .feedback-card {
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feedback-card-header {
+            background-color: orange; /* Coral */
+            color: white;
+        }
+
+        .feedback-card-body {
+            background-color: #ffffff; /* White */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" style="color: white;">Feedbacks</h1>
+        <div class="row">
+            <% if (feedbacks.length > 0) { %>
+                <% feedbacks.forEach(feedback => { %>
+                    <div class="col-md-4">
+                        <div class="card feedback-card fade-in">
+                            <div class="card-header feedback-card-header">
+                                <h5 class="card-title"><%= feedback.name %></h5>
+                            </div>
+                            <div class="card-body feedback-card-body">
+                                <h6 class="card-subtitle mb-2 text-muted"><%= feedback.email %></h6>
+                                <p class="card-text"><%= feedback.message %></p>
+                                <p class="text-right"><small class="text-muted">Submitted on: <%= feedback.created_at.toISOString().split('T')[0] %></small></p>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="col-md-12 text-center">
+                    <div class="alert alert-warning">No feedback available.</div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

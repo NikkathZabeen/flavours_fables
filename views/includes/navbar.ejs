@@ -1,0 +1,113 @@
+<style>
+    body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Fixed navbar styling */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000; /* Ensure the navbar stays above other elements */
+        background-color: #333; /* Optional: add a background to navbar */
+    }
+
+    /* Navbar Brand */
+    .navbar-brand {
+        color: rgb(239, 184, 111);
+        font-size: 28px;
+        font-weight: 500;
+        font-family: fantasy;
+        padding-left: 20px;
+        display: block;
+    }
+
+    /* Cart Icon */
+    #cart {
+        color: white;
+        margin-top: 15px;
+    }
+
+    /* Navbar Links */
+    .navbar-nav .nav-link {
+        position: relative;
+        display: block;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: orange;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: orange;
+        transition: width 0.3s ease;
+    }
+
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: orange;
+        transition: width 0.3s ease;
+    }
+
+    /* Ensure content starts below the navbar */
+    .content {
+        padding-top: 80px; /* Adjust this padding to match the navbar height */
+    }
+</style>
+
+<!-- Fixed Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <img src="/images/logo.png" height="40px" alt="logo">
+        <a class="navbar-brand" href="/">Flavours and Fables</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" style="padding-left: 400px;">
+                <% if (!isempLoggedIn) { %>
+                    <!-- Regular user menu -->
+                    <a class="nav-link text-white fw-bold" style="margin-right: 30px;" aria-current="page" href="/">Home</a>
+                    <a class="nav-link text-white fw-bold" style="margin-right: 30px;" href="/items">Menu</a>
+                    <a class="nav-link text-white fw-bold" style="margin-right: 30px;" href="/reserve">Reserve table</a>
+                    <a class="nav-link text-white fw-bold" style="margin-right: 30px;" href="/about">About</a>
+                    <a class="nav-link text-white fw-bold" style="margin-right: 30px;" href="/contact">Contact us</a>
+
+                    <% if (!isLoggedIn) { %>
+                        <!-- User is not logged in, show Login link -->
+                        <a class="nav-link text-white fw-bold" style="margin-right: 30px;" href="/login">Login</a>
+                    <% } else { %>
+                        <!-- User is logged in, show Logout link -->
+                        <a class="nav-link text-white fw-bold" style="margin-right: 30px;" href="/login/logout">Logout</a>
+                    <% } %>
+                    
+                    <!-- Cart for regular users -->
+                    <a href="/cart">
+                        <i class="fa-solid fa-cart-shopping" id="cart" style="margin-right: 30px;"></i>
+                    </a>
+
+                <% } else { %>
+                    <!-- Employee menu -->
+                    <a class="nav-link text-white fw-bold" style="margin-left: 350px;" aria-current="page" href="/">Home</a>
+                    <a class="nav-link text-white fw-bold" style="margin-left: 30px;" href="/orders">Orders</a>
+                    <a class="nav-link text-white fw-bold" style="margin-left: 30px;" href="/showfeedback">Feedback</a>
+
+                    <a class="nav-link text-white fw-bold" style="margin-left: 30px;" href="/login/emplogout">Logout</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

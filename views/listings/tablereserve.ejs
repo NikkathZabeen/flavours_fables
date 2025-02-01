@@ -1,0 +1,140 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+  *{
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+  }
+  body{
+      font-family: 'Poppins', sans-serif;
+      background: url("/images/tablereserve.jpg") center/cover no-repeat;
+  }
+  .banner{
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("banner-img.jpg") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding-left: 420px;
+      padding-bottom: 300px;
+  }
+  .card-container{
+      display: grid;
+      grid-template-columns: 420px 420px;
+  }
+  h1{
+      padding-top: 100px;
+      text-align: center;
+      color: white;
+  }
+  .card-content{
+      height: 330px;
+      border-radius: 30px;
+  }
+  .card-content h3{
+      text-align: center;
+      color: orange;
+      padding: 25px 0 10px 0;
+      font-size: 26px;
+      font-weight: 500;
+      text-decoration: wavy;
+  }
+  .form-row{
+      display: flex;
+      width: 90%;
+      margin: 0 auto;
+  }
+  form select, form input{
+      display: block;
+      width: 100%;
+      margin: 15px 12px;
+      padding: 5px;
+      font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      border-bottom: 1px solid #ffffff;
+      font-weight: 300;
+      border: 3px solid #ffffff;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  form input:hover, form select:hover {
+    border-color: orange;
+  }
+  form input[type="text"], form input[type="number"], form input::placeholder, select{
+      color: #9a9a9a;
+  }
+  form input[type="submit"]{
+      color: #fff;
+      background: #f2745f;
+      padding: 12px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  form input[type="submit"]:hover{
+      opacity: 0.9;
+      background-color: orange;
+  }
+  @media(max-width: 992px){
+      .card-container{
+          grid-template-columns: 100%;
+          width: 100vw;
+      }
+  }
+</style>
+
+<body>
+    <h1>BOOK YOUR TABLE NOW</h1>
+    <section class="banner">
+        <div class="card-container">
+            <div class="card-img">
+                <div class="card-content">
+                    <h3>Reservation</h3>
+                    <form action="/reserve" method="POST"> <!-- Specify POST action -->
+                        <div class="form-row">
+                            <input type="date" name="reservation_date" placeholder="Date" style="border-radius: 10px;" required>
+
+                            <select name="hours" style="border-radius: 10px;" required>
+                                <option value="">Select Hour</option>
+                                <option value="10:00">10:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="22:00">22:00</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <input type="text" name="phone_number" placeholder="Phone Number" style="border-radius: 10px;" required>
+                        </div>
+
+                        <div class="form-row" id="occasion">
+                            <select id="occasions" name="occasions" style="border-radius: 10px;" required>
+                                <option value="">Select Occasion</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="anniversary">Anniversary</option>
+                                <option value="dinner">Dinner</option>
+                                <option value="candle">Candle Light</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <input type="number" name="num_persons" placeholder="How Many Persons?" style="border-radius: 10px;" min="1" max="8" required>
+                        </div>
+
+                        <div class="form-row">
+                            <input type="submit" value="BOOK TABLE" style="border-radius: 10px;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+
+<style>
+    .card-img-top {
+        height: 300px; /* Set a fixed height for the images */
+        object-fit: cover; /* Cover the area while maintaining aspect ratio */
+        display:block; /* Makes the image a block element */
+        margin-left: auto; /* Center the image horizontally */
+        margin-right: auto; /* Center the image horizontally */
+    }
+    body{
+        background-color: black;
+    }
+
+</style>
+<body>
+
+<!-- Add a container for proper alignment -->
+<div class="container mt-4" >
+    <!-- Create a row for the cards -->
+    <div class="row" style="padding-top: 100px;">
+        <!-- First card -->
+        <div class="col-md-6">
+            <div class="card" style="width: 90%;">
+                <img src="https://centurylinen.com/wp-content/uploads/2020/07/restaurant-staff-scaled.jpg" class="card-img-top" alt="Employee">
+                <div class="card-body">
+                    <h5 class="card-title">Employee Login</h5>
+                    <p class="card-text">Access your schedule and stay on top of tasks.</p>
+                    <a href="/login/employeelogin" class="btn btn-dark" style="background-color: orange; margin-left: 160px">Login</a>
+                </div>
+            </div>
+        </div>
+        <!-- Second card -->
+        <div class="col-md-6">
+            <div class="card" style="width: 90%;">
+                <img src="https://surveysparrow.com/wp-content/uploads/2023/08/restaurant-customer-experience-banner.png" class="card-img-top" alt="Customer">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Login</h5>
+                    <p class="card-text">Track your orders and share your experience.</p>
+                    <a href="/login/signup" class="btn btn-dark" style="background-color: orange; margin-left: 120px;">Signup</a>
+                    <a href="/login/user" class="btn btn-dark" style="background-color: orange; margin-left: 10px; ">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

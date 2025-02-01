@@ -1,0 +1,178 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+
+    <!-- Bootstrap CSS  -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0c0c0c;
+            color: white;
+            /* padding-top: 100px; */
+        }
+
+        .contact-container {
+            padding: 50px 0;
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: orange;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .highlight {
+            color: orange;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .contact-info i {
+            color: orange;
+            margin-right: 10px;
+        }
+
+        .form-control, .btn {
+            background-color: #333;
+            color: white;
+        }
+
+        .form-control:focus, .btn:focus {
+            background-color:white;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: orange;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: orange;
+        }
+
+        .map-container img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .map-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* .social-icons i {
+            font-size: 2rem;
+            color: orange;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons i:hover {
+            color: orange;
+        } */
+
+        .form-section {
+            margin-top: 50px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+    </style>
+<body>
+
+    <!-- Contact Us Section -->
+    <div class="container contact-container">
+        <h1 class="contact-title">Get in Touch with <span class="highlight">Flavours and Fables</span></h1>
+
+        <div class="row">
+            <!-- Contact Info -->
+            <div class="col-md-6 contact-info">
+                <h2>Contact Information</h2>
+                <p><i class="fas fa-map-marker-alt"></i> Flavours and Fables 123 Spice Avenue, Fort Kochi, Kerala, India</p>
+                <p><i class="fas fa-phone-alt"></i> +91 9381316232 </p>
+                <p><i class="fas fa-envelope"></i> info@flavoursandfables.com</p>
+                <!-- <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-md-6">
+                <h2>Send Us a Feedback</h2>
+                <form action="/feedback" method="POST" class="form-section">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" name=email required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="message" rows="4" placeholder="Your Message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <!-- <div class="row mt-5">
+            <div class="col-md-12 map-container">
+                <img src="https://images.unsplash.com/photo-1529692236671-f1bfea6fd0f6" alt="Map Location">
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Bootstrap JS, jQuery, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>

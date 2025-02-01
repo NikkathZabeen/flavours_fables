@@ -1,0 +1,164 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+       <!-- Bootstrap CSS -->
+       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+       <!-- Font Awesome for icons -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000; /* Changed background to black */
+            color: #fff; /* Changed text color to white */
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            padding: 50px 0;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: orange;
+            text-align: center;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .title span {
+            color: orange;
+        }
+
+        .about-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .about-images img {
+            width: 80%; /* Reduced image size */
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-images img:hover {
+            transform: scale(1.05);
+        }
+
+        .vision-section, .mission-section {
+            margin-top: 50px;
+            animation: slideIn 1.5s ease;
+        }
+
+        .highlight {
+            color: orange;
+            font-weight: bold;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+
+<body>
+
+    <!-- Main Section -->
+    <div class="container main-container">
+        <h1 class="title">Welcome to <span>Flavours and Fables</span></h1>
+
+        <!-- About Us Section -->
+        <div class="row mt-5">
+            <div class="col-md-6 about-text">
+                <h2>About Us</h2>
+                <p>
+                    At <span class="highlight">Flavours and Fables</span>, we combine the art of storytelling with the finest cuisines. Our restaurant is a place where every dish tells a tale, inspired by global recipes and infused with the essence of local ingredients. We believe in creating an experience that engages all your senses, transporting you to a world where flavors come alive and stories are shared.
+                </p>
+                <p>
+                    With our exquisite dishes, impeccable service, and a cozy ambiance, <span class="highlight">Flavours and Fables</span> is the perfect spot to celebrate special moments or simply enjoy a night out with friends and family.
+                </p>
+            </div>
+            <div class="col-md-6 about-images">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1f/c8/60/de/satisfy-your-hunger-pangs.jpg?w=600&h=-1&s=1" alt="Restaurant Interior" > <!-- Reduced image size -->
+            </div>
+        </div>
+
+        <!-- Vision and Mission Section -->
+        <div class="row vision-section">
+            <div class="col-md-6 about-images">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Delicious Dish">
+            </div>
+            <div class="col-md-6 about-text">
+                <h2>Our Vision</h2>
+                <p>
+                    To be a place where guests feel welcomed, cherished, and inspired, and where every meal is a new and delightful journey.
+                </p>
+                <h2>Our Mission</h2>
+                <p>
+                    To offer culinary excellence by serving dishes that celebrate a fusion of tradition and innovation, creating memorable dining experiences for every guest.
+                </p>
+            </div>
+        </div>
+
+        <!-- What Makes Us Special Section -->
+        <div class="row mission-section">
+            <div class="col-md-12 text-center mt-5">
+                <h2>What Makes Us Special?</h2>
+            </div>
+        </div>
+        <div class="row text-center mt-3">
+            <div class="col-md-4">
+                <i class="fas fa-utensils fa-3x" style="color: orange"></i>
+                <h4>Exquisite Cuisine</h4>
+                <p>Our chefs bring the world’s flavors to your plate with a unique blend of spices, ingredients, and storytelling.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-glass-cheers fa-3x" style="color: orange"></i>
+                <h4>Unique Ambiance</h4>
+                <p>A vibrant space that combines modern design with cozy, intimate corners, perfect for any occasion.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-leaf fa-3x" style="color: orange"></i>
+                <h4>Farm-to-Table Ingredients</h4>
+                <p>Our ingredients are sourced locally, ensuring freshness and sustainability in every bite.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, jQuery, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
